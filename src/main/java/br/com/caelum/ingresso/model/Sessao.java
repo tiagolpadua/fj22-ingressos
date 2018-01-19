@@ -99,4 +99,12 @@ public class Sessao {
 		return ingressos.stream().map(Ingresso::getLugar)
 				.noneMatch(lugar -> lugar.equals(lugarSelecionado));
 	}
+
+	public Set<Ingresso> getIngressos() {
+		return ingressos;
+	}
+
+	public void setIngressos(Set<Ingresso> ingressos) {
+		this.ingressos = ingressos;
+	}
 }
