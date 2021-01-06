@@ -11,10 +11,13 @@
 
         <form action='/admin/sala' method="post">
             <div class="form-group">
-                <input type="hidden" name="id" value="${sala.id}">
+                <input type="hidden" name="salaId" value="${salaForm.salaId}">
+                <c:forEach items="${salaForm.lugares}" var="lugar" varStatus="status">
+                    <input type="hidden" name="lugares[${status.index}].id" value="${lugar.id}">
+                </c:forEach>
 
                 <label for="nome">Nome:</label>
-                <input id="nome" type="text" name="nome" class="form-control" value="${sala.nome}">
+                <input id="nome" type="text" name="nome" class="form-control" value="${salaForm.nome}">
 
                 <c:forEach items="${bindingResult.getFieldErrors('nome')}" var="error">
                     <span class="text-danger">${error.defaultMessage}</span>
@@ -26,7 +29,7 @@
 <!--              <div class="form-group"> -->
 <!--                 <label for="preco">Preço:</label> -->
 <!--                 <input id="preco" type="text" name="preco" -->
-<%-- 						class="form-control" value="${sala.preco}" /> --%>
+<%-- 						class="form-control" value="${salaForm.preco}" /> --%>
 <%--                 <c:forEach items="${bindingResult.getFieldErrors('preco')}" var="error"> --%>
 <%-- 					<span class="text-danger">${error.defaultMessage}</span> --%>
 <%-- 				</c:forEach> --%>

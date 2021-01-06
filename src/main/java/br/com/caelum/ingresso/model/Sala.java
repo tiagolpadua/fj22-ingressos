@@ -1,7 +1,5 @@
 package br.com.caelum.ingresso.model;
 
-import org.hibernate.validator.constraints.NotBlank;
-
 import javax.persistence.*;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -13,14 +11,13 @@ import java.util.stream.Collectors;
 public class Sala {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
 
-    @NotBlank
     private String nome;
 
     @OneToMany(fetch = FetchType.EAGER)
-    private List<Lugar> lugares = new ArrayList<>();
+    private Set<Lugar> lugares = new HashSet<>();
 
     /**
      * @deprecated hibernate only
@@ -54,11 +51,11 @@ public class Sala {
         this.lugares.add(lugar);
     }
 
-    public List<Lugar> getLugares() {
+    public Set<Lugar> getLugares() {
         return lugares;
     }
 
-    public void setLugares(List<Lugar> lugares) {
+    public void setLugares(Set<Lugar> lugares) {
         this.lugares = lugares;
     }
 

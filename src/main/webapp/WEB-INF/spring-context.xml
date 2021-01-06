@@ -28,8 +28,8 @@
 
 	<bean id="mysqlDS" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="username" value="root"/>
-		<property name="password" value="caelum"/>
-		<property name="url" value="jdbc:mysql://localhost/ingresso?createDatabaseIfNotExist=true"/>
+		<property name="password" value=""/>
+		<property name="url" value="jdbc:mysql://localhost/ingresso?createDatabaseIfNotExist=true&amp;useSSL=false"/>
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
 	</bean>
 	
@@ -51,8 +51,9 @@
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<property name="host" value="smtp.gmail.com" />
 		<property name="port" value="587" />
-		<property name="username" value="cursofj22@gmail.com" />
-		<property name="password" value="Caelum123" />
+		<property name="username" value="fj22.spring@gmail.com" />
+		<property name="password" value="zrolhwlbeapfcacz" />
+
 
 		<property name="javaMailProperties">
 			<props>
