@@ -18,9 +18,7 @@ public class Filme {
     private String nome;
     private Duration duracao;
     private String genero;
-    
-    
-    
+
     /**
      * @deprecated hibernate only
      */
