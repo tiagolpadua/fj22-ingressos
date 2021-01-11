@@ -18,58 +18,52 @@ import java.util.Optional;
 @Controller
 public class FilmeController {
 
+  @Autowired
+  private FilmeDao filmeDao;
 
-    @Autowired
-    private FilmeDao filmeDao;
+  @GetMapping({ "/admin/filme", "/admin/filme/{id}" })
+  public ModelAndView form(@PathVariable("id") Optional<Integer> id, Filme filme) {
+    ModelAndView modelAndView = new ModelAndView("filme/filme");
 
-
-    @GetMapping({"/admin/filme", "/admin/filme/{id}"})
-    public ModelAndView form(@PathVariable("id") Optional<Integer> id, Filme filme){
-
-        ModelAndView modelAndView = new ModelAndView("filme/filme");
-
-        if (id.isPresent()){
-            filme = filmeDao.findOne(id.get());
-        }
-
-        modelAndView.addObject("filme", filme);
-
-        return modelAndView;
+    if (id.isPresent()) {
+      filme = filmeDao.findOne(id.get());
     }
 
+    modelAndView.addObject("filme", filme);
 
-    @PostMapping("/admin/filme")
-    @Transactional
-    public ModelAndView salva(@Valid Filme filme, BindingResult result){
+    return modelAndView;
+  }
 
-        if (result.hasErrors()) {
-            return form(Optional.ofNullable(filme.getId()), filme);
-        }
+  @PostMapping("/admin/filme")
+  @Transactional
+  public ModelAndView salva(@Valid Filme filme, BindingResult result) {
 
-        filmeDao.save(filme);
-
-        ModelAndView view = new ModelAndView("redirect:/admin/filmes");
-
-        return view;
+    if (result.hasErrors()) {
+      return form(Optional.ofNullable(filme.getId()), filme);
     }
 
+    filmeDao.save(filme);
 
-    @GetMapping(value="/admin/filmes")
-    public ModelAndView lista(){
+    ModelAndView view = new ModelAndView("redirect:/admin/filmes");
 
-        ModelAndView modelAndView = new ModelAndView("filme/lista");
+    return view;
+  }
 
-        modelAndView.addObject("filmes", filmeDao.findAll());
+  @GetMapping(value = "/admin/filmes")
+  public ModelAndView lista() {
 
-        return modelAndView;
-    }
+    ModelAndView modelAndView = new ModelAndView("filme/lista");
 
+    modelAndView.addObject("filmes", filmeDao.findAll());
 
-    @DeleteMapping("/admin/filme/{id}")
-    @ResponseBody
-    @Transactional
-    public void delete(@PathVariable("id") Integer id){
-        filmeDao.delete(id);
-    }
+    return modelAndView;
+  }
+
+  @DeleteMapping("/admin/filme/{id}")
+  @ResponseBody
+  @Transactional
+  public void delete(@PathVariable("id") Integer id) {
+    filmeDao.delete(id);
+  }
 
 }

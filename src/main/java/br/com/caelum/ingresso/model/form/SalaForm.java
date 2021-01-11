@@ -13,7 +13,7 @@ import br.com.caelum.ingresso.model.Sala;
 
 public class SalaForm {
     private Integer salaId;
-    private BigDecimal preco;
+    private BigDecimal preco = BigDecimal.ZERO;
 
     @NotBlank
     private String nome;

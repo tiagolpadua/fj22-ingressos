@@ -15,69 +15,67 @@ import javax.persistence.Id;
 @Entity
 public class Filme {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private String nome;
-    private Duration duracao;
-    private String genero;
-    private BigDecimal  preco;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Integer id;
+  private String nome;
+  private Duration duracao;
+  private String genero;
+  private BigDecimal preco = BigDecimal.ZERO;
 
-    /**
-     * @deprecated hibernate only
-     */
-    public Filme() {
+  /**
+   * @deprecated hibernate only
+   */
+  public Filme() {
 
-    }
-    
-    public Filme(String nome, Duration duracao, String genero, BigDecimal   preco) {
-		this.nome = nome;
-		this.duracao = duracao;
-		this.genero = genero;
-		this.preco = preco;
-	}
+  }
 
-	public Integer getId() {
-        return id;
-    }
+  public Filme(String nome, Duration duracao, String genero, BigDecimal preco) {
+    this.nome = nome;
+    this.duracao = duracao;
+    this.genero = genero;
+    this.preco = preco;
+  }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+  public Integer getId() {
+    return id;
+  }
 
-    public String getNome() {
-        return nome;
-    }
+  public void setId(Integer id) {
+    this.id = id;
+  }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+  public String getNome() {
+    return nome;
+  }
 
-    public Duration getDuracao() {
-        return duracao;
-    }
+  public void setNome(String nome) {
+    this.nome = nome;
+  }
 
-    public void setDuracao(long duracao) {
-        this.duracao = Duration.ofMinutes(duracao);
-    }
+  public Duration getDuracao() {
+    return duracao;
+  }
 
-    public String getGenero() {
-        return genero;
-    }
+  public void setDuracao(long duracao) {
+    this.duracao = Duration.ofMinutes(duracao);
+  }
 
-    public void setGenero(String genero) {
-        this.genero = genero;
-    }
+ 
+  public String getGenero() {
+    return genero;
+  }
 
-    public BigDecimal getPreco() {
-      return preco.setScale(2, RoundingMode.HALF_UP);
-    }
+  public void setGenero(String genero) {
+    this.genero = genero;
+  }
 
-    public void setPreco(BigDecimal preco) {
-      this.preco = preco;
-    }
+  public BigDecimal getPreco() {
+    return preco.setScale(2, RoundingMode.HALF_UP);
+  }
 
-    public void setDuracao(Duration duracao) {
-      this.duracao = duracao;
-    }
+  public void setPreco(BigDecimal preco) {
+    this.preco = preco;
+  }
+  
 }
