@@ -143,13 +143,6 @@
 			<version>4.12</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-test</artifactId>
-			<version>4.3.5.RELEASE</version>
-			<scope>test</scope>
-		</dependency>
-
 	</dependencies>
 	<build>
 		<finalName>ingresso</finalName>
