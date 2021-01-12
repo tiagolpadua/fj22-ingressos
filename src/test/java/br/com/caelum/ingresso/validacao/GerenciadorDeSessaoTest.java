@@ -3,6 +3,7 @@ package br.com.caelum.ingresso.validacao;
 import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -59,5 +60,13 @@ public class GerenciadorDeSessaoTest {
     List<Sessao> sessoes = Arrays.asList(sessaoDasDez, sessaoDasDezoito);
     GerenciadorDeSessao gerenciador = new GerenciadorDeSessao(sessoes);
     Assert.assertTrue(gerenciador.cabe(sessaoDasTreze));
+  }
+  
+  @Test
+  public void garanteQueFilmesQueViramANoiteNaoCabem() {
+    List<Sessao> sessoes = new ArrayList<>();
+    Sessao corujao = new Sessao(LocalTime.parse("23:30:00"), rogueOne, sala3D);
+    GerenciadorDeSessao gerenciador = new GerenciadorDeSessao(sessoes);
+    Assert.assertFalse(gerenciador.cabe(corujao));
   }
 }
