@@ -13,8 +13,11 @@
 		<failOnMissingWebXml>false</failOnMissingWebXml>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
+                <sonar.projectKey>tiagolpadua_fj22-ingressos</sonar.projectKey>
+                <sonar.organization>tiagolpadua</sonar.organization>
+                <sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
-
+	
 	<developers>
 		<developer>
 			<name>John Doe</name>
